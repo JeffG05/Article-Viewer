@@ -5,15 +5,27 @@ Android Library to View an Article Offline
 
 ## Getting Started
 
-Follow these steps in order to import Article-Viewer into your project:
+Follow these steps to import Article-Viewer into your project:
 
-### Gradle
+### Requirements
+Add this to your Project build.gradle
+```
+allprojects {
+    repositories {
+        maven {
+            url  "https://dl.bintray.com/jeffg05/Article-Viewer"
+        }
+    }
+}
+```
+
+### 1.  Gradle
 
 ```
 compile 'com.jeffg.articleviewer:article-viewer:1.0.2'
 ```
 
-### Maven
+### 2.  Maven
 
 ```
 <dependency>
@@ -24,7 +36,7 @@ compile 'com.jeffg.articleviewer:article-viewer:1.0.2'
 </dependency>
 ```
 
-### Ivy
+### 3.  Ivy
 
 ```
 <dependency org='com.jeffg.articleviewer' name='article-viewer' rev='1.0.2'>
