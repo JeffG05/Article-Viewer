@@ -22,7 +22,7 @@ allprojects {
 ### 1.  Gradle
 
 ```
-compile 'com.jeffg.articleviewer:article-viewer:1.0.2'
+compile 'com.jeffg.articleviewer:article-viewer:1.1.0'
 ```
 
 ### 2.  Maven
@@ -31,7 +31,7 @@ compile 'com.jeffg.articleviewer:article-viewer:1.0.2'
 <dependency>
   <groupId>com.jeffg.articleviewer</groupId>
   <artifactId>article-viewer</artifactId>
-  <version>1.0.2</version>
+  <version>1.1.0</version>
   <type>pom</type>
 </dependency>
 ```
@@ -39,7 +39,7 @@ compile 'com.jeffg.articleviewer:article-viewer:1.0.2'
 ### 3.  Ivy
 
 ```
-<dependency org='com.jeffg.articleviewer' name='article-viewer' rev='1.0.2'>
+<dependency org='com.jeffg.articleviewer' name='article-viewer' rev='1.1.0'>
   <artifact name='article-viewer' ext='pom' ></artifact>
 </dependency>
 ```
@@ -52,7 +52,7 @@ compile 'com.jeffg.articleviewer:article-viewer:1.0.2'
 ```
 ArticleHtml articleHtml = new ArticleHtml(this);
 articleHtml.setBuilder(new ArticleContent.Builder()
-      .setImage(bitmap)
+      .setImageBitmap(bitmap)
       .setTitle("Title")
       .setSource("Source")
       .setContent("Content")
@@ -66,6 +66,22 @@ webview.loadDataWithBaseURL("", html, "text/html", "UTF-8", "");
 ```
 ### Result
 <img src="https://raw.github.com/JeffG05/Article-Viewer/master/screenshot.png" width="216" height="391">
+
+### All Builder() Commands
+```
+.setImageBitmap(Bitmap bitmap)
+.setImageDrawable(Drawable drawable)
+.setTitle(String title)
+.setTitleTextSize(int px)
+.setTitleTextAlign(String textAlign) - ArticleContent.LEFT/ArticleContent.CENTER/ArticleContent.RIGHT
+.setSource(String source)
+.setSourceTextSize(int px)
+.setSourceTextAlign(String textAlign) - ArticleContent.LEFT/ArticleContent.CENTER/ArticleContent.RIGHT
+.setContent(String content)
+.setContentTextSize(int px)
+.setContentTextAlign(String textAlign) - ArticleContent.LEFT/ArticleContent.CENTER/ArticleContent.RIGHT
+.build()
+```
 
 ## License
 
