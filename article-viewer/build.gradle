@@ -1,5 +1,32 @@
 apply plugin: 'com.android.library'
 
+ext {
+
+    //For bintray and jcenter distribution
+    bintrayRepo = 'Article-Viewer'
+    bintrayName = 'Article-Viewer'
+
+    publishedGroupId = 'com.jeffg.articleviewer'
+    libraryName = 'Article-Viewer'
+    artifact = 'article-viewer' //This artifact name should be the same with library module name
+
+    libraryDescription = 'Android Library to View an Article Offline'
+
+    siteUrl = 'https://github.com/JeffG05/Article-Viewer'
+    gitUrl = 'https://github.com/JeffG05/Article-Viewer.git'
+
+    libraryVersion = '1.1.0'
+
+    developerId = 'jeffg05'
+    developerName = 'Jeff Gugelmann'
+    developerEmail = 'gugelmann.jeff@gmail.com'
+    organization = 'jeffg05' // if you push to organization's repository.
+    licenseName = 'The Apache Software License, Version 2.0'  //Example for license
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+
+}
+
 android {
     compileSdkVersion 27
 
@@ -32,3 +59,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
+
+apply from: 'https://raw.githubusercontent.com/quangctkm9207/template-files/master/android/gradle/install.gradle'
+apply from: 'https://raw.githubusercontent.com/quangctkm9207/template-files/master/android/gradle/bintray.gradle'

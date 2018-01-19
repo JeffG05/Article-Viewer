@@ -21,62 +21,39 @@ public class ArticleHtml {
             "</head>" +
             "<body>" +
             "<style>" +
-            "@media (min-width: 0px) {" +
-            "h3 {" +
-            "font-size: 30px;" +
-            "}" +
-            "p {" +
-            "font-size: 20px;" +
-            "}" +
-            "}" +
-            "@media (min-width: 768px) {" +
-            "h3 {" +
-            "font-size: 45px;" +
-            "}" +
-            "p {" +
-            "font-size: 25px;" +
-            "}" +
-            "}" +
-            "@media (min-width: 992px) {" +
-            "h3 {" +
-            "font-size: 60px;" +
-            "}" +
-            "p {" +
-            "font-size: 30px;" +
-            "}" +
-            "}" +
-            "@media (min-width: 1200px) {" +
-            "h3 {" +
-            "font-size: 75px;" +
-            "}" +
-            "p {" +
-            "font-size: 35px;" +
-            "}" +
-            "}" +
             "body {" +
             "margin: 0px;" +
             "}" +
             ".title {" +
             "width: 90%;" +
-            "text-align: center;" +
+            "text-align: ";
+    private String html2 = ";" +
             "margin-bottom: 0px;" +
             "margin-left: 5%;" +
             "margin-right: 5%;" +
+            "font-size: ";
+    private String html3 = "px;" +
             "}" +
             ".source {" +
             "width: 90%;" +
-            "text-align: right;" +
+            "text-align: ";
+    private String html4 = ";" +
             "margin-top: 5px" +
             "margin-left: 5%;" +
             "margin-right: 5%;" +
             "margin-bottom: 0px;" +
+            "font-size: ";
+    private String html5 = "px;" +
             "}" +
             ".content {" +
             "width: 90%;" +
-            "text-align: center;" +
+            "text-align: ";
+    private String html6 = ";" +
             "margin-left: 5%;" +
             "margin-right: 5%;" +
             "margin-top: 50px;" +
+            "font-size: ";
+    private String html7 = "px;" +
             "}" +
             ".image {" +
             "width: 100%;" +
@@ -85,17 +62,17 @@ public class ArticleHtml {
             "</style>" +
             "<img class=\"image\" src=\"";
 
-    String html2 = "\">" +
+    String html8 = "\">" +
             "</img>" +
             "<h3 class=\"title\">";
 
-    String html3 = "</h3>" +
+    String html9 = "</h3>" +
             "<p class=\"source\"><i>- ";
 
-    String html4 = "</i></p>" +
+    String html10 = "</i></p>" +
             "<p class=\"content\">";
 
-    String html5 = "</p>" +
+    String html11 = "</p>" +
             "</body>";
 
 
@@ -111,6 +88,18 @@ public class ArticleHtml {
     public String getHtml() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(html1);
+        stringBuilder.append(articleContent.titleTextAlign);
+        stringBuilder.append(html2);
+        stringBuilder.append(articleContent.titleTextSize);
+        stringBuilder.append(html3);
+        stringBuilder.append(articleContent.sourceTextAlign);
+        stringBuilder.append(html4);
+        stringBuilder.append(articleContent.sourceTextSize);
+        stringBuilder.append(html5);
+        stringBuilder.append(articleContent.contentTextAlign);
+        stringBuilder.append(html6);
+        stringBuilder.append(articleContent.contentTextSize);
+        stringBuilder.append(html7);
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         articleContent.image.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
@@ -118,13 +107,13 @@ public class ArticleHtml {
 
         stringBuilder.append("data:image/bmb;base64,");
         stringBuilder.append(Base64.encodeToString(byteArray, Base64.DEFAULT));
-        stringBuilder.append(html2);
+        stringBuilder.append(html8);
         stringBuilder.append(articleContent.title);
-        stringBuilder.append(html3);
+        stringBuilder.append(html9);
         stringBuilder.append(articleContent.source);
-        stringBuilder.append(html4);
+        stringBuilder.append(html10);
         stringBuilder.append(articleContent.content);
-        stringBuilder.append(html5);
+        stringBuilder.append(html11);
         return stringBuilder.toString();
     }
 

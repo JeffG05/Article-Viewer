@@ -47,10 +47,14 @@ public class MainActivity extends AppCompatActivity {
 
         ArticleHtml articleHtml = new ArticleHtml(this);
         articleHtml.setBuilder(new ArticleContent.Builder()
-                .setImage(getDrawable(R.drawable.pic))
+                .setImageDrawable(getDrawable(R.drawable.pic))
                 .setTitle("'I'm sorry' - but how do you tell if an apology is fake or genuine?")
                 .setSource("BBC News")
                 .setContent(newsText)
+                .setTitleTextSize(30)
+                .setSourceTextSize(20)
+                .setContentTextSize(15)
+                .setContentTextAlign(ArticleContent.CENTER)
                 .build());
         webView.loadDataWithBaseURL("", articleHtml.getHtml(), "text/html", "UTF-8", "");
 
