@@ -52,6 +52,8 @@ String html = articleHtml.getHtml();
 ```
 webview.loadDataWithBaseURL("", html, "text/html", "UTF-8", "");
 ```
+### Result
+![Result Image](https://raw.github.com/JeffG05/Article-Viewer/master/screenshot.jpg)
 
 ## License
 
