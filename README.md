@@ -53,7 +53,6 @@ String html = articleHtml.getHtml();
 webview.loadDataWithBaseURL("", html, "text/html", "UTF-8", "");
 ```
 
-### Result
 
 
 
