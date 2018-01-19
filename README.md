@@ -36,6 +36,25 @@ compile 'com.jeffg.articleviewer:article-viewer:1.0.0'
 
 ## Implementing into your project
 
+### Use the Builder to create a html string
+```
+ArticleHtml articleHtml = new ArticleHtml(this);
+articleHtml.setBuilder(new ArticleContent.Builder()
+      .setImage(bitmap)
+      .setTitle("Title")
+      .setSource("Source")
+      .setContent("Content")
+      .build());
+  
+String html = articleHtml.getHtml();
+```
+### Insert the html into the webview
+```
+webview.loadDataWithBaseURL("", html, "text/html", "UTF-8", "");
+```
+
+### Result
+
 
 
 
