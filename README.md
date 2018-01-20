@@ -1,7 +1,7 @@
 # Article-Viewer
 Android Library to View an Article Offline
 
- [ ![Download](https://api.bintray.com/packages/jeffg05/Article-Viewer/Article-Viewer/images/download.svg) ](https://bintray.com/jeffg05/Article-Viewer/Article-Viewer/_latestVersion)
+ [ ![Download](https://api.bintray.com/packages/jeffg05/Article-Viewer/Article-Viewer/images/download.svg) ](https://bintray.com/jeffg05/Article-Viewer/Article-Viewer/_latestVersion) [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 
 ## Getting Started
 
