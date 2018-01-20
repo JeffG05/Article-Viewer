@@ -10,7 +10,7 @@ Follow one of these steps to import Article-Viewer into your project:
 ### Gradle
 
 ```
-compile 'com.jeffg.articleviewer:article-viewer:1.1.0'
+compile 'com.jeffg.articleviewer:article-viewer:1.1.1'
 ```
 
 ### Maven
@@ -19,7 +19,7 @@ compile 'com.jeffg.articleviewer:article-viewer:1.1.0'
 <dependency>
   <groupId>com.jeffg.articleviewer</groupId>
   <artifactId>article-viewer</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
   <type>pom</type>
 </dependency>
 ```
@@ -27,7 +27,7 @@ compile 'com.jeffg.articleviewer:article-viewer:1.1.0'
 ### Ivy
 
 ```
-<dependency org='com.jeffg.articleviewer' name='article-viewer' rev='1.1.0'>
+<dependency org='com.jeffg.articleviewer' name='article-viewer' rev='1.1.1'>
   <artifact name='article-viewer' ext='pom' ></artifact>
 </dependency>
 ```
