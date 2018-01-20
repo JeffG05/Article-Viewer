@@ -112,7 +112,7 @@ public class ArticleHtml {
         stringBuilder.append(html9);
         stringBuilder.append(articleContent.source);
         stringBuilder.append(html10);
-        stringBuilder.append(articleContent.content.replaceAll("(?m)^[ \t]*\r?\n", "<br>"));
+        stringBuilder.append(articleContent.content.replaceAll("(?m)^[ \t]*\r?\n", "<br><br>"));
         stringBuilder.append(html11);
         return stringBuilder.toString();
     }
