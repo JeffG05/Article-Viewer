@@ -1,5 +1,6 @@
 package com.jeffg.demo;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebView;
@@ -54,10 +55,10 @@ public class MainActivity extends AppCompatActivity {
                 .setTitleTextSize(30)
                 .setSourceTextSize(20)
                 .setContentTextSize(15)
-                .setContentTextAlign(ArticleContent.CENTER)
+                .setContentTextAlign(ArticleContent.LEFT)
                 .build());
-        webView.loadDataWithBaseURL("", articleHtml.getHtml(), "text/html", "UTF-8", "");
 
+        webView.loadDataWithBaseURL("", articleHtml.getHtml(), "text/html", "UTF-8", "");
 
     }
 }

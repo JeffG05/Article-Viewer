@@ -2,9 +2,9 @@ package com.jeffg.articleviewer;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
 
 public class ArticleContent {
 
@@ -18,12 +18,15 @@ public class ArticleContent {
     public String titleTextAlign;
     public String sourceTextAlign;
     public String contentTextAlign;
+    public int titleTextColor;
+    public int sourceTextColor;
+    public int contentTextColor;
 
     public static String LEFT = "left";
     public static String CENTER = "center";
     public static String RIGHT = "right";
 
-    private ArticleContent(Bitmap image, String title, String source, String content, int titleTextSize, int sourceTextSize, int contentTextSize, String titleTextAlign, String sourceTextAlign, String contentTextAlign) {
+    private ArticleContent(Bitmap image, String title, String source, String content, int titleTextSize, int sourceTextSize, int contentTextSize, String titleTextAlign, String sourceTextAlign, String contentTextAlign, int titleTextColor, int sourceTextColor, int contentTextColor) {
         this.image = image;
         this.title = title;
         this.source = source;
@@ -34,6 +37,9 @@ public class ArticleContent {
         this.titleTextAlign = titleTextAlign;
         this.sourceTextAlign = sourceTextAlign;
         this.contentTextAlign = contentTextAlign;
+        this.titleTextColor = titleTextColor;
+        this.sourceTextColor = sourceTextColor;
+        this.contentTextColor = contentTextColor;
     }
 
     private static Bitmap drawableToBitmap (Drawable drawable) {
@@ -70,6 +76,9 @@ public class ArticleContent {
         private String titleTextAlign;
         private String sourceTextAlign;
         private String contentTextAlign;
+        private int titleTextColor;
+        private int sourceTextColor;
+        private int contentTextColor;
 
         public Builder() {
             this.titleTextSize = 30;
@@ -78,6 +87,9 @@ public class ArticleContent {
             this.titleTextAlign = CENTER;
             this.sourceTextAlign = RIGHT;
             this.contentTextAlign = CENTER;
+            this.titleTextColor = Color.BLACK;
+            this.sourceTextColor = Color.BLACK;
+            this.contentTextColor = Color.BLACK;
         }
 
         public Builder setImageBitmap (Bitmap bitmap) {
@@ -85,22 +97,26 @@ public class ArticleContent {
             return this;
         }
 
-        public Builder setImageDrawable (@NonNull Drawable drawable) {
-            this.image = drawableToBitmap(drawable);
+        public Builder setImageDrawable (Drawable drawable) {
+            if (drawable != null) {
+                this.image = drawableToBitmap(drawable);
+            } else {
+                this.image = null;
+            }
             return this;
         }
 
-        public Builder setTitle (@NonNull String title) {
+        public Builder setTitle (String title) {
             this.title = title;
             return this;
         }
 
-        public Builder setSource (@NonNull String source) {
+        public Builder setSource (String source) {
             this.source = source;
             return this;
         }
 
-        public Builder setContent (@NonNull String content) {
+        public Builder setContent (String content) {
             this.content = content;
             return this;
         }
@@ -135,8 +151,23 @@ public class ArticleContent {
             return this;
         }
 
+        public Builder setTitleTextColor(int color) {
+            this.titleTextColor = color;
+            return this;
+        }
+
+        public Builder setSourceTextColor(int color) {
+            this.sourceTextColor = color;
+            return this;
+        }
+
+        public Builder setContentTextColor(int color) {
+            this.contentTextColor = color;
+            return this;
+        }
+
         public ArticleContent build() {
-            return new ArticleContent(this.image, this.title, this.source, this.content, this.titleTextSize, this.sourceTextSize, this.contentTextSize, this.titleTextAlign, this.sourceTextAlign, this.contentTextAlign);
+            return new ArticleContent(this.image, this.title, this.source, this.content, this.titleTextSize, this.sourceTextSize, this.contentTextSize, this.titleTextAlign, this.sourceTextAlign, this.contentTextAlign, this.titleTextColor, this.sourceTextColor, this.contentTextColor);
         }
 
     }
