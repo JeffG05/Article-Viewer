@@ -21,12 +21,13 @@ public class ArticleContent {
     public int titleTextColor;
     public int sourceTextColor;
     public int contentTextColor;
+    public int backgroundColor;
 
     public static String LEFT = "left";
     public static String CENTER = "center";
     public static String RIGHT = "right";
 
-    private ArticleContent(Bitmap image, String title, String source, String content, int titleTextSize, int sourceTextSize, int contentTextSize, String titleTextAlign, String sourceTextAlign, String contentTextAlign, int titleTextColor, int sourceTextColor, int contentTextColor) {
+    private ArticleContent(Bitmap image, String title, String source, String content, int titleTextSize, int sourceTextSize, int contentTextSize, String titleTextAlign, String sourceTextAlign, String contentTextAlign, int titleTextColor, int sourceTextColor, int contentTextColor, int backgroundColor) {
         this.image = image;
         this.title = title;
         this.source = source;
@@ -40,6 +41,7 @@ public class ArticleContent {
         this.titleTextColor = titleTextColor;
         this.sourceTextColor = sourceTextColor;
         this.contentTextColor = contentTextColor;
+        this.backgroundColor = backgroundColor;
     }
 
     private static Bitmap drawableToBitmap (Drawable drawable) {
@@ -79,6 +81,7 @@ public class ArticleContent {
         private int titleTextColor;
         private int sourceTextColor;
         private int contentTextColor;
+        private int backgroundColor;
 
         public Builder() {
             this.titleTextSize = 30;
@@ -90,6 +93,7 @@ public class ArticleContent {
             this.titleTextColor = Color.BLACK;
             this.sourceTextColor = Color.BLACK;
             this.contentTextColor = Color.BLACK;
+            this.backgroundColor = Color.WHITE;
         }
 
         public Builder setImageBitmap (Bitmap bitmap) {
@@ -166,8 +170,13 @@ public class ArticleContent {
             return this;
         }
 
+        public Builder setBackgroundColor(int color) {
+            this.backgroundColor = color;
+            return this;
+        }
+
         public ArticleContent build() {
-            return new ArticleContent(this.image, this.title, this.source, this.content, this.titleTextSize, this.sourceTextSize, this.contentTextSize, this.titleTextAlign, this.sourceTextAlign, this.contentTextAlign, this.titleTextColor, this.sourceTextColor, this.contentTextColor);
+            return new ArticleContent(this.image, this.title, this.source, this.content, this.titleTextSize, this.sourceTextSize, this.contentTextSize, this.titleTextAlign, this.sourceTextAlign, this.contentTextAlign, this.titleTextColor, this.sourceTextColor, this.contentTextColor, this.backgroundColor);
         }
 
     }

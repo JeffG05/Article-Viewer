@@ -26,61 +26,63 @@ public class ArticleHtml {
             "<style>" +
             "body {" +
             "margin: 0px;" +
+            "background-color: #";
+    private String html2 = ";" +
             "}" +
             ".title {" +
             "width: 90%;" +
             "text-align: ";
-    private String html2 = ";" +
-            "color: #";
     private String html3 = ";" +
+            "color: #";
+    private String html4 = ";" +
             "margin-bottom: 0px;" +
             "margin-left: 5%;" +
             "margin-right: 5%;" +
             "font-size: ";
-    private String html4 = "px;" +
+    private String html5 = "px;" +
             "}" +
             ".source {" +
             "width: 90%;" +
             "text-align: ";
-    private String html5 = ";" +
-            "color: #";
     private String html6 = ";" +
+            "color: #";
+    private String html7 = ";" +
             "margin-top: 5px" +
             "margin-left: 5%;" +
             "margin-right: 5%;" +
             "margin-bottom: 0px;" +
             "font-size: ";
-    private String html7 = "px;" +
+    private String html8 = "px;" +
             "}" +
             ".content {" +
             "width: 90%;" +
             "text-align: ";
-    private String html8 = ";" +
-            "color: #";
     private String html9 = ";" +
+            "color: #";
+    private String html10 = ";" +
             "margin-left: 5%;" +
             "margin-right: 5%;" +
             "margin-top: 50px;" +
             "font-size: ";
-    private String html10 = "px;" +
+    private String html11 = "px;" +
             "}" +
             ".image {" +
             "width: 100%;" +
             "padding: 0px;" +
             "}" +
             "</style>";
-    private String html11 = "<img class=\"image\" src=\"data:image/bmb;base64,";
-    private String html12 = "\">" +
+    private String html12 = "<img class=\"image\" src=\"data:image/bmb;base64,";
+    private String html13 = "\">" +
             "</img>";
-    private String html13 = "<h3 class=\"title\">";
-    private String html14 = "</h3>" +
+    private String html14 = "<h3 class=\"title\">";
+    private String html15 = "</h3>" +
             "<p class=\"source\">";
-    private String html15 = "<i>- ";
-    private String html16 = "</i>";
-    private String html17 = "</p>" +
+    private String html16 = "<i>- ";
+    private String html17 = "</i>";
+    private String html18 = "</p>" +
             "<p class=\"content\">";
 
-    private String html18 = "</p>" +
+    private String html19 = "</p>" +
             "</body>";
 
 
@@ -100,54 +102,56 @@ public class ArticleHtml {
             @Override
             public void run() {
                 stringBuilder.append(html1);
-                stringBuilder.append(articleContent.titleTextAlign);
+                stringBuilder.append(Integer.toHexString(articleContent.backgroundColor).substring(2));
                 stringBuilder.append(html2);
-                stringBuilder.append(Integer.toHexString(articleContent.titleTextColor).substring(2));
+                stringBuilder.append(articleContent.titleTextAlign);
                 stringBuilder.append(html3);
-                stringBuilder.append(articleContent.titleTextSize);
+                stringBuilder.append(Integer.toHexString(articleContent.titleTextColor).substring(2));
                 stringBuilder.append(html4);
-                stringBuilder.append(articleContent.sourceTextAlign);
+                stringBuilder.append(articleContent.titleTextSize);
                 stringBuilder.append(html5);
-                stringBuilder.append(Integer.toHexString(articleContent.sourceTextColor).substring(2));
+                stringBuilder.append(articleContent.sourceTextAlign);
                 stringBuilder.append(html6);
-                stringBuilder.append(articleContent.sourceTextSize);
+                stringBuilder.append(Integer.toHexString(articleContent.sourceTextColor).substring(2));
                 stringBuilder.append(html7);
-                stringBuilder.append(articleContent.contentTextAlign);
+                stringBuilder.append(articleContent.sourceTextSize);
                 stringBuilder.append(html8);
-                stringBuilder.append(Integer.toHexString(articleContent.contentTextColor).substring(2));
+                stringBuilder.append(articleContent.contentTextAlign);
                 stringBuilder.append(html9);
-                stringBuilder.append(articleContent.contentTextSize);
+                stringBuilder.append(Integer.toHexString(articleContent.contentTextColor).substring(2));
                 stringBuilder.append(html10);
+                stringBuilder.append(articleContent.contentTextSize);
+                stringBuilder.append(html11);
 
                 if (articleContent.image != null) {
-                    stringBuilder.append(html11);
+                    stringBuilder.append(html12);
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                     articleContent.image.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
                     byte[] byteArray = byteArrayOutputStream .toByteArray();
                     stringBuilder.append(Base64.encodeToString(byteArray, Base64.DEFAULT));
-                    stringBuilder.append(html12);
+                    stringBuilder.append(html13);
                 }
 
 
-                stringBuilder.append(html13);
+                stringBuilder.append(html14);
                 if (articleContent.title != null) {
                     stringBuilder.append(articleContent.title);
                 } else {
                     throw new NullPointerException("The title cannot be null");
                 }
-                stringBuilder.append(html14);
+                stringBuilder.append(html15);
                 if (articleContent.source != null) {
-                    stringBuilder.append(html15);
-                    stringBuilder.append(articleContent.source);
                     stringBuilder.append(html16);
+                    stringBuilder.append(articleContent.source);
+                    stringBuilder.append(html17);
                 }
-                stringBuilder.append(html17);
+                stringBuilder.append(html18);
                 if (articleContent.content != null) {
                     stringBuilder.append(articleContent.content.replaceAll("(?m)^[ \t]*\r?\n", "<br><br>"));
                 } else {
                     throw new NullPointerException("The content cannot be null");
                 }
-                stringBuilder.append(html18);
+                stringBuilder.append(html19);
                 latch.countDown();
             }
         };
@@ -166,59 +170,62 @@ public class ArticleHtml {
 
     public ArticleContent fromHtml(String html) {
         String text1 = html.substring(html1.length());
-        String titleTextAlign = text1.split(";")[0];
+        String backgroundColor = text1.split(";")[0];
 
-        String text2 = text1.substring(titleTextAlign.length() + html2.length());
-        String titleTextColor = text2.split(";")[0];
+        String text2 = text1.substring(backgroundColor.length() + html2.length());
+        String titleTextAlign = text2.split(";")[0];
 
-        String text3 = text2.substring(titleTextColor.length() + html3.length());
-        String titleTextSize = text3.split("px;")[0];
+        String text3 = text2.substring(titleTextAlign.length() + html3.length());
+        String titleTextColor = text3.split(";")[0];
 
-        String text4 = text3.substring(titleTextSize.length() + html4.length());
-        String sourceTextAlign = text4.split(";")[0];
+        String text4 = text3.substring(titleTextColor.length() + html4.length());
+        String titleTextSize = text4.split("px;")[0];
 
-        String text5 = text4.substring(sourceTextAlign.length() + html5.length());
-        String sourceTextColor = text5.split(";")[0];
+        String text5 = text4.substring(titleTextSize.length() + html5.length());
+        String sourceTextAlign = text5.split(";")[0];
 
-        String text6 = text5.substring(sourceTextColor.length() + html6.length());
-        String sourceTextSize = text6.split("px;")[0];
+        String text6 = text5.substring(sourceTextAlign.length() + html6.length());
+        String sourceTextColor = text6.split(";")[0];
 
-        String text7 = text6.substring(sourceTextSize.length() + html7.length());
-        String contentTextAlign = text7.split(";")[0];
+        String text7 = text6.substring(sourceTextColor.length() + html7.length());
+        String sourceTextSize = text7.split("px;")[0];
 
-        String text8 = text7.substring(contentTextAlign.length() + html8.length());
-        String contentTextColor = text8.split(";")[0];
+        String text8 = text7.substring(sourceTextSize.length() + html8.length());
+        String contentTextAlign = text8.split(";")[0];
 
-        String text9 = text8.substring(contentTextColor.length() + html9.length());
-        String contentTextSize = text9.split("px;")[0];
+        String text9 = text8.substring(contentTextAlign.length() + html9.length());
+        String contentTextColor = text9.split(";")[0];
+
+        String text10 = text9.substring(contentTextColor.length() + html10.length());
+        String contentTextSize = text10.split("px;")[0];
 
         String image = null;
-        String text10;
+        String text11;
         if (html.contains(html11)) {
-            text10 = text9.substring(contentTextSize.length() + html10.length() + html11.length());
-            image = text10.split(html12)[0];
-            text10 = text10.substring(html12.length() + image.length());
+            text11 = text10.substring(contentTextSize.length() + html11.length() + html12.length());
+            image = text11.split(html13)[0];
+            text11 = text11.substring(html13.length() + image.length());
             Log.i("SPLIT", image);
         } else {
-            text10 = text9.substring(contentTextSize.length() + html10.length());
+            text11 = text10.substring(contentTextSize.length() + html11.length());
         }
 
-        String text11 = text10.substring(html13.length());
-        String title = text11.split("</h3>")[0];
+        String text12 = text11.substring(html14.length());
+        String title = text12.split("</h3>")[0];
 
         String source = null;
-        String text12;
-        if (html.contains(html15)) {
-            text12 = text11.substring(title.length() + html14.length() + html15.length());
-            source = text12.split(html16)[0];
-            text12 = text12.substring(html16.length() + source.length());
+        String text13;
+        if (html.contains(html16)) {
+            text13 = text12.substring(title.length() + html15.length() + html16.length());
+            source = text13.split(html17)[0];
+            text13 = text13.substring(html17.length() + source.length());
             Log.i("SPLIT", source);
         } else {
-            text12 = text11.substring(title.length() + html14.length());
+            text13 = text12.substring(title.length() + html15.length());
         }
 
-        String text13 = text12.substring(html17.length());
-        String content = text13.split("</p>")[0];
+        String text14 = text13.substring(html18.length());
+        String content = text14.split("</p>")[0];
 
         Log.i("SPLIT", titleTextAlign);
         Log.i("SPLIT", titleTextColor);
