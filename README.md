@@ -10,7 +10,7 @@ Follow one of these steps to import Article-Viewer into your project:
 ### Gradle
 
 ```
-compile 'com.jeffg.articleviewer:article-viewer:1.2.2'
+compile 'com.jeffg.articleviewer:article-viewer:1.3.0'
 ```
 
 ### Maven
@@ -19,7 +19,7 @@ compile 'com.jeffg.articleviewer:article-viewer:1.2.2'
 <dependency>
   <groupId>com.jeffg.articleviewer</groupId>
   <artifactId>article-viewer</artifactId>
-  <version>1.2.2</version>
+  <version>1.3.0</version>
   <type>pom</type>
 </dependency>
 ```
@@ -27,7 +27,7 @@ compile 'com.jeffg.articleviewer:article-viewer:1.2.2'
 ### Ivy
 
 ```
-<dependency org='com.jeffg.articleviewer' name='article-viewer' rev='1.2.2'>
+<dependency org='com.jeffg.articleviewer' name='article-viewer' rev='1.3.0'>
   <artifact name='article-viewer' ext='pom' ></artifact>
 </dependency>
 ```
@@ -60,17 +60,18 @@ webview.loadDataWithBaseURL("", html, "text/html", "UTF-8", "");
 .setImageBitmap(Bitmap bitmap)
 .setImageDrawable(Drawable drawable)
 .setBackgroundColor(int color)
+.setFont(String font)
 .setTitle(String title)
 .setTitleTextSize(int px)
-.setTitleTextAlign(String textAlign) - ArticleContent.LEFT/ArticleContent.CENTER/ArticleContent.RIGHT
+.setTitleTextAlign(String textAlign)
 .setTitleTextColor(int color)
 .setSource(String source)
 .setSourceTextSize(int px)
-.setSourceTextAlign(String textAlign) - ArticleContent.LEFT/ArticleContent.CENTER/ArticleContent.RIGHT
+.setSourceTextAlign(String textAlign)
 .setSourceTextColor(int color)
 .setContent(String content)
 .setContentTextSize(int px)
-.setContentTextAlign(String textAlign) - ArticleContent.LEFT/ArticleContent.CENTER/ArticleContent.RIGHT
+.setContentTextAlign(String textAlign)
 .setContentTextColor(int color)
 .build()
 ```
