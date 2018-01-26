@@ -47,7 +47,7 @@ public class ArticleHtml {
     private String html6 = ";" +
             "color: #";
     private String html7 = ";" +
-            "margin-top: 5px" +
+            "margin-top: 5px;" +
             "margin-left: 5%;" +
             "margin-right: 5%;" +
             "margin-bottom: 0px;" +
@@ -83,6 +83,12 @@ public class ArticleHtml {
             "<p class=\"content\">";
 
     private String html19 = "</p>" +
+            "<style>" +
+            "* {" +
+            "font-family: ";
+    private String html20 = ";" +
+            "}" +
+            "</style>" +
             "</body>";
 
 
@@ -152,6 +158,14 @@ public class ArticleHtml {
                     throw new NullPointerException("The content cannot be null");
                 }
                 stringBuilder.append(html19);
+                if (articleContent.font.equals(ArticleContent.ARIAL)) {
+                    stringBuilder.append("Arial, Helvetica, sans-serif");
+                } else if (articleContent.font.equals(ArticleContent.PALATINO_LINOTYPE)) {
+                    stringBuilder.append("\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif");
+                } else if (articleContent.font.equals(ArticleContent.LUCIDA_CONSOLE)) {
+                    stringBuilder.append("\"Lucida Console\", Monaco, monospace");
+                }
+                stringBuilder.append(html20);
                 latch.countDown();
             }
         };
@@ -227,6 +241,17 @@ public class ArticleHtml {
         String text14 = text13.substring(html18.length());
         String content = text14.split("</p>")[0];
 
+        String text15 = text14.substring(content.length() + html19.length());
+        String font = text15.split(";")[0];
+
+        if(font.equals("Arial, Helvetica, sans-serif")) {
+            font = ArticleContent.ARIAL;
+        } else if(font.equals("\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif")) {
+            font = ArticleContent.PALATINO_LINOTYPE;
+        } else if(font.equals("\"Lucida Console\", Monaco, monospace")) {
+            font = ArticleContent.LUCIDA_CONSOLE;
+        }
+
         Log.i("SPLIT", titleTextAlign);
         Log.i("SPLIT", titleTextColor);
         Log.i("SPLIT", titleTextSize);
@@ -251,7 +276,9 @@ public class ArticleHtml {
                 .setContentTextSize(Integer.parseInt(contentTextSize))
                 .setTitle(title)
                 .setSource(source)
-                .setContent(content);
+                .setContent(content)
+                .setFont(font)
+                .setBackgroundColor(Color.parseColor("#" + backgroundColor));
 
         if (image != null) {
             builder.setImageBitmap(BitmapFactory.decodeByteArray(Base64.decode(image, Base64.DEFAULT), 0, Base64.decode(image, Base64.DEFAULT).length));

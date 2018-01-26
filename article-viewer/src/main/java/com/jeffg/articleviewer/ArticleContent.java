@@ -5,6 +5,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.StringDef;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 public class ArticleContent {
 
@@ -22,12 +26,25 @@ public class ArticleContent {
     public int sourceTextColor;
     public int contentTextColor;
     public int backgroundColor;
+    public String font;
 
-    public static String LEFT = "left";
-    public static String CENTER = "center";
-    public static String RIGHT = "right";
+    public static final String LEFT = "left";
+    public static final String CENTER = "center";
+    public static final String RIGHT = "right";
 
-    private ArticleContent(Bitmap image, String title, String source, String content, int titleTextSize, int sourceTextSize, int contentTextSize, String titleTextAlign, String sourceTextAlign, String contentTextAlign, int titleTextColor, int sourceTextColor, int contentTextColor, int backgroundColor) {
+    public static final String ARIAL = "arial";
+    public static final String PALATINO_LINOTYPE = "palatino_linotype";
+    public static final String LUCIDA_CONSOLE = "lucida_console";
+
+    @Retention(RetentionPolicy.SOURCE)
+    @StringDef({LEFT, CENTER, RIGHT})
+    private @interface TextAlignment {}
+
+    @Retention(RetentionPolicy.SOURCE)
+    @StringDef({ARIAL, PALATINO_LINOTYPE, LUCIDA_CONSOLE})
+    private @interface Fonts {}
+
+    private ArticleContent(Bitmap image, String title, String source, String content, int titleTextSize, int sourceTextSize, int contentTextSize, String titleTextAlign, String sourceTextAlign, String contentTextAlign, int titleTextColor, int sourceTextColor, int contentTextColor, int backgroundColor, String font) {
         this.image = image;
         this.title = title;
         this.source = source;
@@ -42,6 +59,7 @@ public class ArticleContent {
         this.sourceTextColor = sourceTextColor;
         this.contentTextColor = contentTextColor;
         this.backgroundColor = backgroundColor;
+        this.font = font;
     }
 
     private static Bitmap drawableToBitmap (Drawable drawable) {
@@ -82,6 +100,7 @@ public class ArticleContent {
         private int sourceTextColor;
         private int contentTextColor;
         private int backgroundColor;
+        private String font;
 
         public Builder() {
             this.titleTextSize = 30;
@@ -94,6 +113,7 @@ public class ArticleContent {
             this.sourceTextColor = Color.BLACK;
             this.contentTextColor = Color.BLACK;
             this.backgroundColor = Color.WHITE;
+            this.font = ARIAL;
         }
 
         public Builder setImageBitmap (Bitmap bitmap) {
@@ -140,17 +160,17 @@ public class ArticleContent {
             return this;
         }
 
-        public Builder setTitleTextAlign(String textAlign) {
+        public Builder setTitleTextAlign(@TextAlignment String textAlign) {
             this.titleTextAlign = textAlign;
             return this;
         }
 
-        public Builder setSourceTextAlign(String textAlign) {
+        public Builder setSourceTextAlign(@TextAlignment String textAlign) {
             this.sourceTextAlign = textAlign;
             return this;
         }
 
-        public Builder setContentTextAlign(String textAlign) {
+        public Builder setContentTextAlign(@TextAlignment String textAlign) {
             this.contentTextAlign = textAlign;
             return this;
         }
@@ -175,8 +195,13 @@ public class ArticleContent {
             return this;
         }
 
+        public Builder setFont(@Fonts String font) {
+            this.font = font;
+            return this;
+        }
+
         public ArticleContent build() {
-            return new ArticleContent(this.image, this.title, this.source, this.content, this.titleTextSize, this.sourceTextSize, this.contentTextSize, this.titleTextAlign, this.sourceTextAlign, this.contentTextAlign, this.titleTextColor, this.sourceTextColor, this.contentTextColor, this.backgroundColor);
+            return new ArticleContent(this.image, this.title, this.source, this.content, this.titleTextSize, this.sourceTextSize, this.contentTextSize, this.titleTextAlign, this.sourceTextAlign, this.contentTextAlign, this.titleTextColor, this.sourceTextColor, this.contentTextColor, this.backgroundColor, this.font);
         }
 
     }

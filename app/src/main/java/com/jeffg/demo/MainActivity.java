@@ -1,6 +1,8 @@
 package com.jeffg.demo;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebView;
@@ -49,13 +51,12 @@ public class MainActivity extends AppCompatActivity {
         ArticleHtml articleHtml = new ArticleHtml(this);
         articleHtml.setBuilder(new ArticleContent.Builder()
                 .setImageDrawable(getDrawable(R.drawable.pic))
-                .setTitle("'I'm sorry' - but how do you tell if an apology is fake or genuine?")
+                .setTitle("'I'm sorry' - but how do you tell; if an apology is fake or genuine?")
                 .setSource("BBC News")
                 .setContent(newsText)
-                .setTitleTextSize(30)
-                .setSourceTextSize(20)
-                .setContentTextSize(15)
                 .setContentTextAlign(ArticleContent.LEFT)
+                .setBackgroundColor(Color.YELLOW)
+                .setTitleTextColor(Color.RED)
                 .build());
 
         webView.loadDataWithBaseURL("", articleHtml.getHtml(), "text/html", "UTF-8", "");
