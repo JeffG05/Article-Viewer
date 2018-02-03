@@ -15,7 +15,7 @@ ext {
     siteUrl = 'https://github.com/JeffG05/Article-Viewer'
     gitUrl = 'https://github.com/JeffG05/Article-Viewer.git'
 
-    libraryVersion = '1.3.1'
+    libraryVersion = '1.3.2'
 
     developerId = 'jeffg05'
     developerName = 'Jeff Gugelmann'

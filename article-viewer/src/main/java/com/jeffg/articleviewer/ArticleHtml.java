@@ -132,7 +132,7 @@ public class ArticleHtml {
                 if (articleContent.image != null) {
                     stringBuilder.append(html12);
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                    articleContent.image.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                    articleContent.image.compress(Bitmap.CompressFormat.JPEG, articleContent.quality, byteArrayOutputStream);
                     byte[] byteArray = byteArrayOutputStream .toByteArray();
                     stringBuilder.append(Base64.encodeToString(byteArray, Base64.DEFAULT));
                     stringBuilder.append(html13);
@@ -281,7 +281,7 @@ public class ArticleHtml {
                 .setBackgroundColor(Color.parseColor("#" + backgroundColor));
 
         if (image != null) {
-            builder.setImageBitmap(BitmapFactory.decodeByteArray(Base64.decode(image, Base64.DEFAULT), 0, Base64.decode(image, Base64.DEFAULT).length));
+            builder.setImageBitmap(BitmapFactory.decodeByteArray(Base64.decode(image, Base64.DEFAULT), 0, Base64.decode(image, Base64.DEFAULT).length), 100);
         }
 
         ArticleContent articleContent = builder.build();

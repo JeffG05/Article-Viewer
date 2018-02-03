@@ -27,6 +27,7 @@ public class ArticleContent {
     public int contentTextColor;
     public int backgroundColor;
     public String font;
+    public int quality;
 
     public static final String LEFT = "left";
     public static final String CENTER = "center";
@@ -44,7 +45,7 @@ public class ArticleContent {
     @StringDef({ARIAL, PALATINO_LINOTYPE, LUCIDA_CONSOLE})
     private @interface Fonts {}
 
-    private ArticleContent(Bitmap image, String title, String source, String content, int titleTextSize, int sourceTextSize, int contentTextSize, String titleTextAlign, String sourceTextAlign, String contentTextAlign, int titleTextColor, int sourceTextColor, int contentTextColor, int backgroundColor, String font) {
+    private ArticleContent(Bitmap image, String title, String source, String content, int titleTextSize, int sourceTextSize, int contentTextSize, String titleTextAlign, String sourceTextAlign, String contentTextAlign, int titleTextColor, int sourceTextColor, int contentTextColor, int backgroundColor, String font, int quality) {
         this.image = image;
         this.title = title;
         this.source = source;
@@ -60,6 +61,7 @@ public class ArticleContent {
         this.contentTextColor = contentTextColor;
         this.backgroundColor = backgroundColor;
         this.font = font;
+        this.quality = quality;
     }
 
     private static Bitmap drawableToBitmap (Drawable drawable) {
@@ -101,6 +103,7 @@ public class ArticleContent {
         private int contentTextColor;
         private int backgroundColor;
         private String font;
+        private int quality;
 
         public Builder() {
             this.titleTextSize = 30;
@@ -116,12 +119,14 @@ public class ArticleContent {
             this.font = ARIAL;
         }
 
-        public Builder setImageBitmap (Bitmap bitmap) {
+        public Builder setImageBitmap (Bitmap bitmap, int quality) {
             this.image = bitmap;
+            this.quality = quality;
             return this;
         }
 
-        public Builder setImageDrawable (Drawable drawable) {
+        public Builder setImageDrawable (Drawable drawable, int quality) {
+            this.quality = quality;
             if (drawable != null) {
                 this.image = drawableToBitmap(drawable);
             } else {
@@ -201,7 +206,7 @@ public class ArticleContent {
         }
 
         public ArticleContent build() {
-            return new ArticleContent(this.image, this.title, this.source, this.content, this.titleTextSize, this.sourceTextSize, this.contentTextSize, this.titleTextAlign, this.sourceTextAlign, this.contentTextAlign, this.titleTextColor, this.sourceTextColor, this.contentTextColor, this.backgroundColor, this.font);
+            return new ArticleContent(this.image, this.title, this.source, this.content, this.titleTextSize, this.sourceTextSize, this.contentTextSize, this.titleTextAlign, this.sourceTextAlign, this.contentTextAlign, this.titleTextColor, this.sourceTextColor, this.contentTextColor, this.backgroundColor, this.font, this.quality);
         }
 
     }
