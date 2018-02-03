@@ -10,7 +10,7 @@ Follow one of these steps to import Article-Viewer into your project:
 ### Gradle
 
 ```
-compile 'com.jeffg.articleviewer:article-viewer:1.3.1'
+compile 'com.jeffg.articleviewer:article-viewer:1.3.2'
 ```
 
 ### Maven
@@ -19,7 +19,7 @@ compile 'com.jeffg.articleviewer:article-viewer:1.3.1'
 <dependency>
   <groupId>com.jeffg.articleviewer</groupId>
   <artifactId>article-viewer</artifactId>
-  <version>1.3.1</version>
+  <version>1.3.2</version>
   <type>pom</type>
 </dependency>
 ```
@@ -27,7 +27,7 @@ compile 'com.jeffg.articleviewer:article-viewer:1.3.1'
 ### Ivy
 
 ```
-<dependency org='com.jeffg.articleviewer' name='article-viewer' rev='1.3.1'>
+<dependency org='com.jeffg.articleviewer' name='article-viewer' rev='1.3.2'>
   <artifact name='article-viewer' ext='pom' ></artifact>
 </dependency>
 ```
@@ -40,7 +40,7 @@ compile 'com.jeffg.articleviewer:article-viewer:1.3.1'
 ```
 ArticleHtml articleHtml = new ArticleHtml(this);
 articleHtml.setBuilder(new ArticleContent.Builder()
-      .setImageBitmap(bitmap)
+      .setImageBitmap(bitmap, 100)
       .setTitle("Title")
       .setSource("Source")
       .setContent("Content")
@@ -57,8 +57,8 @@ webview.loadDataWithBaseURL("", html, "text/html", "UTF-8", "");
 
 ### All Builder() Commands
 ```
-.setImageBitmap(Bitmap bitmap)
-.setImageDrawable(Drawable drawable)
+.setImageBitmap(Bitmap bitmap, int quality)
+.setImageDrawable(Drawable drawable, int quality)
 .setBackgroundColor(int color)
 .setFont(String font)
 .setTitle(String title)
