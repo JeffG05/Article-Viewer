@@ -215,7 +215,7 @@ public class ArticleHtml {
 
         String image = null;
         String text11;
-        if (html.contains(html11)) {
+        if (html.contains(html12)) {
             text11 = text10.substring(contentTextSize.length() + html11.length() + html12.length());
             image = text11.split(html13)[0];
             text11 = text11.substring(html13.length() + image.length());
